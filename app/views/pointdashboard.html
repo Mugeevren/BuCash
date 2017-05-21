@@ -1,0 +1,60 @@
+<div class="container" ng-controller="PointDashboardController">
+	
+	<div class="row" style="margin: 50px 20px 20px 50px;">
+		<div class="col-sm-3">
+			<h6>İşletme Bilgileriniz</h6>
+			<div class="row wd-panel">
+				<div class="wd-point-image">
+    				<img ng-src="{{point.image}}">
+    				<div>
+    					<span>{{point.address}}</span><br/>
+    					<span>{{point.city}}</span><br/>
+    					<span class="wd-workinghours-header">Çalışma Saatleri</span><br/>
+    					<span>Hafta içi: </span><span>{{point.weekdaysWorkingHoursOpen}}</span> - <span>{{point.weekdaysworkinghoursclose}}</span><br/>
+    					<span>Cumartesi: </span><span>{{point.saturdayWorkingHoursOpen}}</span> - <span>{{point.saturdayWorkingHoursClose}}</span><br/>
+    					<span>Pazar: </span><span>{{point.sundaysWorkingHoursOpen}}</span> - <span>{{point.sundaysWorkingHoursClose}}</span><br/>
+    				</div>
+    				<div>
+						<button class="ld-button-primary" ng-click="onPointUpdateModalOpen()">Güncelle</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-5">
+			<h6>Günlük Hesap Özeti</h6>
+			<div class="wd-panel">
+				<h1>{{Name}}</h1>
+				<transfer-list list="fsdhfbsdljf"></transfer-list>
+			</div>
+
+		</div>
+		<div class="col-sm-3">
+			<h6>Hızlı İşlem Menüsü</h6>
+			<div class="wd-panel">
+				<div class="wd-op-button">
+					<button class="ld-button-primary ld-button-large">Yeni Transfer Oluşturma</button>
+				</div>
+				<div class="wd-op-button">
+					<button class="ld-button-primary ld-button-large" ng-click="onTransmissionModalOpen()">Transfer Teslimi</button>
+				</div>
+				<div class="wd-op-button">
+					<button class="ld-button-primary ld-button-large" ng-click="onRefundModalOpen()">Transfer İade</button>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<pointinfo-update-modal show-modal="updatePointInfoModalShown"></pointinfo-update-modal>
+	<transmission-refund-modal show-modal="transmissionModalShown"
+								title="Transfer Teslimi"
+								header-level-one="Transfer Kodu"
+								header-level-two="Alıcı Bilgileri"
+								header-level-three="Transfer Teslimi Tamamla"
+								></transmission-refund-modal>
+	<transmission-refund-modal show-modal="refundModalShown"
+								title="Transfer İade"
+								header-level-one="Transfer İade Kodu"
+								header-level-two="Gönderen Bilgileri"
+								header-level-three="Transfer İade Tamamla"
+								></transmission-refund-modal>
+</div>

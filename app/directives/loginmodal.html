@@ -1,0 +1,39 @@
+<modal-dialog box-width="550px" box-height="320px" show-modal="show">
+        <div class="container">
+          <div class="row">
+              <div class="col-sm-12">
+                <h3 ng-if="isUserLoginOpened">Kullanıcı Girişi</h3>
+                <h3 ng-if="isBucashPointLoginOpened">BuCash Noktası Girişi</h3>
+                <hr style="border-top:1px solid #ffc238"/>
+              </div>
+          </div>
+          <div><span>{{errorMessage}}</span></div>
+          <div class="row">
+              <div class="col-sm-4 field-label">
+                Kullanıcı Adı: 
+              </div>
+              <div class="col-sm-8 field-input">
+                <input type="text" name="userName" ng-model="user.name"></input>
+                
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-4 field-label">
+                Şifre: 
+              </div>
+              <div class="col-sm-8 field-input">
+                <input type="password" name="password" ng-model="user.password"></input>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-4 field-link">
+                <span>Şifremi unuttum</span> <br />
+                <span ng-if="isUserLoginOpened">Kayıt Ol</span> 
+              </div>
+              <div class="col-sm-8">
+                <button ng-click="onLoginButtonClick()" class='ld-button-primary'>Giriş</button><br />
+              </div>
+          </div>
+        </div>
+        
+    </modal-dialog>

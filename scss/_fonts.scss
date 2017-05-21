@@ -1,0 +1,102 @@
+
+@font-face {
+    font-family: 'icomoon';
+    src:    url('../fonts/icomoon.eot?mkg6tl');
+    src:    url('../fonts/icomoon.eot?mkg6tl#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?mkg6tl') format('truetype'),
+        url('../fonts/icomoon.woff?mkg6tl') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-patronline-icon:before {
+    content: "\e900";
+}
+
+%fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+%glyphicon{    position: relative;
+    
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+$font :'ralewaybold';
+
+%f-bold {
+	font-family:'ralewaybold';
+}
+
+%f-regular {
+	font-family:'ralewayregular';
+}
+
+%f-light {
+	font-family:'ralewaylight';
+}
+
+%f-elight {
+	font-family:'ralewayextralight';
+}
+
+
+%f-medium {
+	font-family:'ralewaymedium';
+}
+
+%f-semibold {
+	font-family:'ralewaysemibold';
+}
+
+%font-regular-os {
+    font-family: 'Open Sans';
+     font-weight: 400;
+    
+}
+
+%font-medium-os {
+    font-family: 'Open Sans';
+     font-weight: 600;
+    
+}
+
+
+%font-light-os {
+    font-family: 'Open Sans';
+     font-weight: 300;
+    
+}
+
+
+
+
+
+

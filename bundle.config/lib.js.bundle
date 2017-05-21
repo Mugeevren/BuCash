@@ -1,0 +1,11 @@
+./plugins/moment/min/moment.min.js
+./plugins/lodash/dist/lodash.min.js
+./plugins/jquery/dist/jquery.min.js
+./plugins/jquery-ui/jquery-ui.min.js
+./plugins/bootstrap/dist/js/bootstrap.min.js
+./plugins/angular/angular.min.js
+./plugins/angular-sanitize/angular-sanitize.min.js
+./plugins/angular-ui-router/release/angular-ui-router.min.js
+./plugins/angular-bind-html-compile/angular-bind-html-compile.min.js
+./plugins/angular-ui-select/dist/select.min.js
+./plugins/angular-local-storage/dist/angular-local-storage.min.js

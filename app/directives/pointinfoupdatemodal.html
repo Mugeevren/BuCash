@@ -1,0 +1,131 @@
+<modal-dialog box-width="550px" box-height="550px" show-modal="show">
+    	<div class="container">
+    		<div class="row">
+      			<div class="col-sm-12">
+      				<h3>İşletme Bilgilerini Güncelle</h3>
+        			<hr style="border-top:1px solid #ffc238"/>
+      			</div>
+    		</div>
+    		<div class="row">
+      			<div class="col-sm-12" ng-click="onAddressInfoDivOpen()">
+      				<h5>Adres Bilgilerini Güncelle</h5>
+        			<hr style="border-top:1px solid #ffc238"/>
+      			</div>
+      			<div class="col-sm-12 wd-info-box" ng-if="addresInfoDivOpen">
+      				<div class="row">
+      					<span class="col-sm-3 wd-label">İl: </span>
+      					<input class="col-sm-7 wd-field" type="input" name="fsdf" placeholder="Hadi bakalım...">
+      				</div>
+      				<div class="row">
+      					<span class="col-sm-3 wd-label">İlçe: </span>
+      					<input class="col-sm-7 wd-field" type="input" name="fsdf" placeholder="Hadi bakalım...">
+      				</div>
+      				<div class="row">
+      					<span class="col-sm-3 wd-label">Adres Detayı: </span>
+      					<textarea class="col-sm-7 wd-field" type="input" name="fsdf" placeholder="Hadi bakalım..."></textarea> 
+      				</div>
+      				<div class="row">
+      					<span class="col-sm-3 wd-label">Posta Kodu: </span>
+      					<input class="col-sm-7 wd-field" type="input" name="fsdf" placeholder="Hadi bakalım...">
+      				</div>
+      				<div class="row">
+      					<div class="col-sm-8"></div>
+      					<button class="col-sm-2 ld-button-primary wd-field">Kaydet</button>
+      					
+      				</div>
+      			</div>
+    		</div>
+    		<div class="row">
+      			<div class="col-sm-12" ng-click="onWorkingHoursDivOpen()">
+      				<h5>Çalışma Saatlerini Güncelle</h5>
+        			<hr style="border-top:1px solid #ffc238"/>
+      			</div>
+      			<div class="col-sm-12 wd-info-box" ng-if="workingHoursDivOpen">
+      				<div class="row">
+      					<div  class="col-sm-3 wd-label"></div>
+      					<span class="col-sm-4 wd-field-header">Açılış</span>
+      					<span class="col-sm-4 wd-field-header">Kapanış</span>
+      				</div>
+      				<div class="row">
+      					<span class="col-sm-3 wd-label">Haftaiçi: </span>
+      					<div class="col-sm-4">
+      						<input class="wd-field-dropdown" list="workHoursList">
+      					</div>
+      					<div class="col-sm-4">
+      						<input class="wd-field-dropdown" list="workHoursList">
+      					</div>
+      				</div>
+      				<div class="row">
+      					<span class="col-sm-3 wd-label">Cumartesi: </span>
+      					<div class="col-sm-4">
+      						<input class="wd-field-dropdown" list="workHoursList">
+      					</div>
+      					<div class="col-sm-4">
+      						<input class="wd-field-dropdown" list="workHoursList">
+      					</div>
+      				</div>
+      				<div class="row">
+      					<span class="col-sm-3 wd-label">Pazar: </span>
+      					<div class="col-sm-4">
+      						<input class="wd-field-dropdown" list="workHoursList">
+      					</div>
+      					<div class="col-sm-4">
+      						<input class="wd-field-dropdown" list="workHoursList">
+      					</div>
+      				</div>
+      				<div class="row">
+      					<div class="col-sm-8"></div>
+      					<button class="col-sm-2 ld-button-primary wd-field">Kaydet</button>
+      					
+      				</div>
+      			</div>
+    		</div>
+    		<div class="row">
+      			<div class="col-sm-12" ng-click="onPointInfoDivOpen()">
+      				<h5>İşletme Bilgilerini Güncelle</h5>
+        			<hr style="border-top:1px solid #ffc238"/>
+      			</div>
+      			<div class="col-sm-12 wd-info-box" ng-if="pointInfoDivOpen">
+      			<div class="row">
+      					<span class="col-sm-3 wd-label">İşletme adı: </span>
+      					<input class="col-sm-7 wd-field" type="input" name="fsdf" placeholder="Hadi bakalım...">
+      				</div>
+      				<div class="row">
+      					<span class="col-sm-3 wd-label">İşletme resmi: </span>
+      					<input class="col-sm-7 wd-field" type="input" name="fsdf" placeholder="Hadi bakalım...">
+      				</div>
+      				<div class="row">
+      					<div class="col-sm-8"></div>
+      					<button class="col-sm-2 ld-button-primary wd-field">Kaydet</button>
+      					
+      				</div>
+      			</div>
+    		</div>
+    	</div>
+</modal-dialog>
+<datalist id="workHoursList">
+	<option value="00:00">
+	<option value="01:00">
+	<option value="02:00">
+	<option value="03:00">
+	<option value="04:00">
+	<option value="05:00">
+	<option value="06:00">
+	<option value="07:00">
+	<option value="08:00">
+	<option value="09:00">
+	<option value="10:00">
+	<option value="11:00">
+	<option value="12:00">
+	<option value="13:00">
+	<option value="14:00">
+	<option value="15:00">
+	<option value="16:00">
+	<option value="17:00">
+	<option value="18:00">
+	<option value="19:00">
+	<option value="20:00">
+	<option value="21:00">
+	<option value="22:00">
+	<option value="23:00">
+</datalist>
