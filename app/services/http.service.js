@@ -1,7 +1,7 @@
 app.service('http', ['$http','$q',function ($http,$q) {
 	
-	var hostURL ='/';
-	var isSimulation = true;
+	var hostURL ='http://localhost:3000/';
+	var isSimulation = false;
 
 	var urlGenerate = function(txnname,data){
 		if(isSimulation){
@@ -17,14 +17,17 @@ app.service('http', ['$http','$q',function ($http,$q) {
 		}
 	}
 
+
+
 	this.post = function(txnname,data){
 		var defer = $q.defer();
 		var url = urlGenerate(txnname);
+		console.log(data);
 		$http.post(url,data).then(function(e){
 
 			 defer.resolve(e);
 
-		},function(){
+		},function(e){
 			defer.reject('Oops... something went wrong');
 		});
 
@@ -34,11 +37,15 @@ app.service('http', ['$http','$q',function ($http,$q) {
 	this.get = function(txnname,data){
 		var defer = $q.defer();
 		var url = urlGenerate(txnname,data);
-		$http.get(url).then(function(e){
+		var config = {
+			 params: data,
+			 headers : {'Accept' : 'application/json'}
+		};
+		$http.get(url, config).then(function(e){
 			
 			 defer.resolve(e);
 
-		},function(){
+		},function(e){
 			defer.reject('Oops... something went wrong');
 		});
 

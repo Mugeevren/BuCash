@@ -1,0 +1,15 @@
+{
+	"name":"Bulut Manav",
+	"id":"4",
+	"point": {
+		"image" : "",
+		"address" : "Altınova Mah. Cumhuriyet Cad. No:8/10 Ayvalık",
+		"city" : "BALIKESİR",
+		"weekdaysWorkingHoursOpen" : "06:00",
+		"weekdaysworkinghoursClose" : "20:30",
+		"saturdaysWorkingHoursOpen" : "08:00",
+		"saturdaysWorkingHoursClose" : "20:30",
+		"sundaysWorkingHoursOpen" : "09:00",
+		"sundaysWorkingHoursClose" : "20:30"
+	}
+}

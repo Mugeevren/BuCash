@@ -78,7 +78,7 @@ body {
     font-family: 'Sansita', sans-serif;
     font-size: 17px;
     text-align: center;
-    padding: 10px 24px;
+    padding: 10px 10px;
 }
 
 .ld-button-line {
@@ -144,8 +144,13 @@ body {
 
   .wd-op-button{
       padding: 10px 10px 10px 10px;
+      display: flex;
       button{
         width: 250px;
+      }
+
+      .ld-button-large {
+        font-size: 15px;
       }
   }
 
@@ -198,6 +203,13 @@ login-modal{
     margin-left: 30px;
   }
 
+  .login-message {
+        background: #fcf2c2;
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 2px solid #ffd36d;
+  }
+
 
 }
 
@@ -228,6 +240,105 @@ pointinfo-update-modal{
     margin-left: 40px;
   }   
 
+}
+
+transfer-create-modal {
+    .tab-icon {
+      font-size: 25px;
+      color: #fcc649;
+    }
+}
+
+.level-container {
+    text-align: center;
+    padding-top: 15px;
+    border: 1px solid #fcc649;
+    bottom: 5px;
+
+    .transfer-summary {
+      margin-top: 40px;
+      span {
+            display: flow-root;
+            padding-bottom: 5px;
+      }
+    }
+
+    .information-message{
+        margin-top: 10px;
+        color: #fcc649;
+        text-align: center;
+    }
+
+    .search-user-input {
+      width: 450px;
+    }
+
+    .search-button{
+      background: #fcc649;
+      content: "\f002";
+      color: #FFF;
+      height: 35px;
+      width: 35px;
+      padding-top: 4px;
+      font-size: 24px;
+      text-align: center;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    .next-level-button {
+      position: absolute;
+      right: 40px;
+      bottom: 40px;
+    }
+
+    .selected-user-box{
+          border: 1px solid #fcc649;
+          border-top: none;
+          margin-top: 20px;
+
+
+          span {
+                display: flow-root;
+                padding-bottom: 5px;
+          }
+
+          h6 {
+                color: #fcc649;
+                font-family: cursive;
+                text-decoration: underline;
+          }
+    }
+
+    .centered-box {
+            position: absolute;
+            right: 200px;
+            left: 200px;
+    }
+
+    .left-box {
+            position: relative;
+            left: 30px;
+            width: 300px;
+            margin-top: 10px;
+    }
+
+    .right-box {
+            position: absolute;
+            right: 40px;
+            top: 170px;
+            width: 300px;
+    }
+
+    .field-label{
+      text-align: right;
+    }
+
+    .field-input{
+      text-align: left;
+    }
 }
 
 /* Header start */
@@ -419,6 +530,10 @@ nav.navbar-findcond span.badge.new {
     background-color: #fcc649;
     min-height: 30px;
     width: 100%;
+
+    i {
+        color: #FFFFFF;
+      }
 }
 .copyright {
     color: #fff;

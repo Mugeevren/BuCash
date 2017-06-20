@@ -1,0 +1,21 @@
+{
+	"id":"3",
+	"point": {
+		"name":"Öncü Gıda",
+		"image" : "",
+		"address": {
+			"addressDetail" : "Hüsnüniyet Sok. No: 15/D",
+			"city" : "İZMİR",
+			"province" : "Foça"
+		},
+		"workingHours" : {
+			"weekdaysOpen" : "08:00",
+			"weekdaysClose" : "23:30",
+			"saturdaysOpen" : "09:00",
+			"saturdaysClose" : "23:30",
+			"sundaysOpen" : "11:00",
+			"sundaysClose" : "23:30"
+		}
+		
+	}
+}

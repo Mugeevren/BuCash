@@ -5,16 +5,15 @@ app.directive('pointinfoUpdateModal', [function () {
 		replace: false,
 
 		scope:{
-			show: '=showModal'
+			show: '=showModal',
+			pointId: '=pointId',
+			onModalClosed: '=?onModalClosed'
 		},
 		controller:['$scope','$rootScope','$state','http', function ($scope, $rootScope,$state,http) {
 			
-			http.get('GetPointInfo').then(function(res){
-				console.log(res);
+			http.get('GetPointInfo',{id: $scope.pointId}).then(function(res){
+				$scope.point = res.data.point;
 			});
-			//$scope.workHoursList = [{value:"00:00"},{value:"01:00"},{value:"02:00"},{value:"03:00"},{value:"04:00"},{value:"05:00"},{value:"06:00"},{value:"07:00"},
-			//{value:"08:00"},{value:"09:00"},{value:"10:00"},{value:"11:00"},{value:"12:00"},{value:"13:00"},{value:"14:00"},{value:"15:00"},
-			//{value:"16:00"},{value:"17:00"},{value:"18:00"},{value:"19:00"},{value:"20:00"},{value:"21:00"},{value:"22:00"},{value:"23:00"},];
 
 			$scope.onWorkingHoursDivOpen = function() {
 				$scope.workingHoursDivOpen = !$scope.workingHoursDivOpen;
@@ -32,14 +31,41 @@ app.directive('pointinfoUpdateModal', [function () {
 				$scope.addresInfoDivOpen = false;
 			};
 
-			/*$scope.calculateHeight = function(isExpand){
-				if(isExpand){
-					$scope.height += 150;
-				}
-				else{
-					$scope.height -= 150;
-				}
-			};*/
+
+			$scope.onAddressInfoUpdate = function(){
+				var req = {
+					id: $scope.pointId,
+					address: $scope.point.address
+				};
+				http.post('UpdatePointAddress',req).then(function(res){
+					if(res.data){
+
+					}
+				});
+			};
+
+			$scope.onWorkingHoursUpdate = function(){
+				var req = {
+					id: $scope.pointId,
+					workingHours: $scope.point.workingHours
+				};
+				http.post('UpdatePointWorkingHours',req).then(function(res){
+				});
+			};
+
+			$scope.onPointInfoUpdate = function(){
+				var req = {
+					id: $scope.pointId,
+					point: {
+						name: $scope.point.name,
+						image: $scope.point.image,
+					}
+				};
+				http.post('UpdatePointInfo',req).then(function(res){
+				});
+			};
+
+			
 		
 		}],
 		link:function (scope, element, attrs){

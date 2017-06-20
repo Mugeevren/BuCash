@@ -1,12 +1,12 @@
 {
   "name": "bucash-web",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "authors": [
     "@mevren"
   ],
   "license": "ISC",
-  "homepage": "",
+  "homepage": "https://github.com/Mugeevren/BuCash",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -26,5 +26,6 @@
     "jquery-ui": "^1.12.1",
     "font-awesome": "^4.7.0",
     "angular-local-storage": "^0.5.2"
-  }
+  },
+  "private": true
 }

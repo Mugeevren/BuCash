@@ -22,13 +22,15 @@ app.config(function($stateProvider, $urlRouterProvider,localStorageServiceProvid
         .state('userdashboard', {
             url: '/userdashboard',
             templateUrl: 'app/views/userdashboard.html',
-            controller:'UserDashboardController'
+            controller:'UserDashboardController',
+            data: { auth: "user"}
         });
     $stateProvider
         .state('pointdashboard', {
             url: '/pointdashboard',
             templateUrl: 'app/views/pointdashboard.html',
-            controller:'PointDashboardController'
+            controller:'PointDashboardController',
+            data: { auth: "point"}
         });
         
       
@@ -37,13 +39,7 @@ app.config(function($stateProvider, $urlRouterProvider,localStorageServiceProvid
 
 app.controller('MainController', ['$scope','$rootScope','Auth','$state', function ($scope,$rootScope,Auth,$state) {
 	
-	$scope.Name = "Müge";
-	$scope.isUserLoginOpened = false;
-	$rootScope.isLoggedIn = false;
-	$rootScope.loggedInUser = {
-		Name:"Müge Evren"
-	};
-
+	
 	$scope.modalShown = false;
   	$scope.openUserLoginModal = function() {
     	$scope.modalShown = true;
@@ -57,11 +53,30 @@ app.controller('MainController', ['$scope','$rootScope','Auth','$state', functio
     	$scope.isUserLoginOpened = false;
   	};
 
-    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-    if (Auth.isLogin()) {
-        event.preventDefault();
-        $state.go('homedashboard');
-    }
-});
-  	
+    $scope.LogOut = function(){
+        Auth.Logout();
+        Auth.SetState(null);
+        $rootScope.loggedInUser = undefined;
+        $rootScope.loggedInUserId = undefined;
+        $rootScope.isLoggedIn = false;
+        $state.go("homedashboard");
+    };
+
+
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+        if (!Auth.isLogin() && !_.isUndefined(toState.data) && !_.isUndefined(toState.data.auth) && (toState.data.auth === 'user' || toState.data.auth === 'point')) {
+            event.preventDefault();
+            return false;
+        }
+        else if (!_.isUndefined(toState.data) && !_.isUndefined(toState.data.auth) && toState.data.auth === 'user' && Auth.GetState() != "user" ) {
+            event.preventDefault();
+            return false;
+        }
+        else if (!_.isUndefined(toState.data) && !_.isUndefined(toState.data.auth) && toState.data.auth === 'point' && Auth.GetState() != "point" ) {
+            event.preventDefault();
+            return false;
+        }
+    });
+
+    
 }]);

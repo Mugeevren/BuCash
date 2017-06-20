@@ -1,0 +1,117 @@
+<modal-dialog box-width="700px" box-height="420px" show-modal="show" on-close-modal="onModalClosed">
+    	<div class="container">
+    		<div class="row">
+      			<div class="col-sm-12">
+      				<h3>{{title}}</h3>
+        			<hr style="border-top:1px solid #ffc238"/>
+      			</div>
+    		</div>
+	        <div class="row">
+	            <div class="col-sm-3 text-center" ng-click="showSenderContainer()">
+	              <h6>Gönderen Bilgileri</h6>
+	              <i class="fa fa-circle tab-icon" ng-class="{'fa-dot-circle-o' : isSenderContainerVisible}"></i>
+	            </div>
+	            <div class="col-sm-2 text-center" ng-click="showReceiverContainer()">
+	              <h6>Alıcı Bilgileri</h6>
+	              <i class="fa fa-circle tab-icon" ng-class="{'fa-dot-circle-o' : isReceiverContainerVisible}"></i>
+	            </div>
+	            <div class="col-sm-3 text-center" ng-click="showTransferInfoContainer()">
+	              <h6>Transfer Bilgileri</h6>
+	              <i class="fa fa-circle tab-icon" ng-class="{'fa-dot-circle-o' : isTransferInfoContainerVisible}"></i>
+	            </div>
+	            <div class="col-sm-2 text-center" ng-click="showConfirmationContainer()">
+	              <h6>Transfer Onayı</h6>
+	              <i class="fa fa-circle tab-icon" ng-class="{'fa-dot-circle-o' : isConfirmationContainerVisible}"></i>
+	            </div>
+	            <div class="col-sm-2 text-center" ng-click="showTransferSummaryContainer()">
+	              <h6>Transfer Özeti</h6>
+	              <i class="fa fa-circle tab-icon" ng-class="{'fa-dot-circle-o' : isTransferSummaryContainerVisible}"></i>
+	            </div>
+	        </div>
+    		<div class="level-container" ng-show="isSenderContainerVisible">
+      			<input type="text" class="search-user-input" name="searchSenderUser" ng-model="input.searchSenderQuery" placeholder="Telefon veya TC Kimlik numarasıyla kullanıcı arayabilirsiniz..."></input>
+      			<a id="userSearchButton" class="ld-button-primary search-button fa fa-search" ng-click="onSearchSenderClick()"></a>
+      			<div ng-if="!isSenderSearchSuccess">
+      				<h6>{{noSenderUserMessage}}</h6>
+      			</div>
+      			<div class="col-sm-6 text-center selected-user-box centered-box" ng-if="isSenderSearchSuccess">
+      				<h6>Seçilen Kullanıcı</h6>
+      				<span>Adı - Soyadı: {{transfer.sender.name}}</span>
+      				<span>TC Kimlik Numarası: {{transfer.sender.identificationNumber}}</span>
+      				<span>Telefon Numarası: {{transfer.sender.mobilephone}}</span>
+      			</div>
+      			<button ng-if="isSenderSearchSuccess" ng-click="showReceiverContainer()" class='ld-button-primary next-level-button'>Devam</button><br />
+    		</div>
+    		<div class="level-container" ng-show="isReceiverContainerVisible">
+      			<input type="text" class="search-user-input" name="searchReceiverUser" ng-model="input.searchReceiverQuery" placeholder="Telefon veya TC Kimlik numarasıyla kullanıcı arayabilirsiniz..."></input>
+      			<a id="userSearchButton" class="ld-button-primary search-button fa fa-search" ng-click="onSearchReceiverClick()"></a>
+      			<div ng-if="!isReceiverSearchSuccess">
+      				<h6>{{noReceiverUserMessage}}</h6>
+      			</div>
+      			<div class="col-sm-6 text-center selected-user-box centered-box" ng-if="isReceiverSearchSuccess">
+      				<h6>Seçilen Kullanıcı</h6>
+      				<span>Adı - Soyadı: {{transfer.receiver.name}}</span>
+      				<span>TC Kimlik Numarası: {{transfer.receiver.identificationNumber}}</span>
+      				<span>Telefon Numarası: {{transfer.receiver.mobilephone}}</span>
+      			</div>
+      			<button ng-if="isReceiverSearchSuccess" ng-click="showTransferInfoContainer()" class='ld-button-primary next-level-button'>Devam</button><br />
+    		</div>
+    		<div class="level-container" ng-show="isTransferInfoContainerVisible">
+	    		<div class="row" style="margin-top: 50px;">
+	      			<div class="col-sm-4 field-label">
+	                	Miktar: 
+	              	</div>
+	              	<div class="col-sm-4 field-input">
+	                	<input type="text" name="amount" ng-model="transfer.amount"></input>
+	                </div>
+	            </div>
+	            <div class="row" style="margin-top: 20px;">
+	                <div class="col-sm-4 field-label">
+	                	Description: 
+	              	</div>
+	              	<div class="col-sm-8 field-input">
+	                	<input type="text" name="description" ng-model="transfer.description" style="width: 300px;"></input>
+	                </div>
+	            </div>
+	            <button ng-if="transfer.amount != undefined && transfer.amount.length>0" ng-click="showConfirmationContainer()" class='ld-button-primary next-level-button'>Devam</button><br />
+
+    		</div>
+    		<div class="level-container" ng-show="isConfirmationContainerVisible">
+    			<div class="row information-message">
+    				<i class="fa fa-bullhorn"></i>
+    				<span><span style="font-weight: bold;">Dikkat:</span>  Kullanıcıdan parayı teslim almadan transfer onayı vermeyin!</span>
+    			</div>
+      			<div class="row transfer-summary">
+	      			<span>Gönderici: {{transfer.sender.name}}</span>
+	      			<span>Alıcı: {{transfer.receiver.name}}</span>
+	      			<span>Miktar: {{transfer.amount}}</span>
+	      			<span>Açıklama: {{transfer.description}}</span>
+	            </div>
+	            <button ng-click="onConfirmTransferClick()" class='ld-button-primary next-level-button'>Onayla</button><br />
+    		</div>
+    		<div class="level-container" ng-show="isTransferSummaryContainerVisible">
+    			<div class="row">
+	      			<div class="text-center selected-user-box left-box">
+	      				<h6>Gönderen</h6>
+	      				<span>Adı - Soyadı: {{transfer.sender.name}}</span>
+	      				<span>TC Kimlik Numarası: {{transfer.sender.identificationNumber}}</span>
+	      				<span>Telefon Numarası: {{transfer.sender.mobilephone}}</span>
+	      			</div>
+	      			<div class="text-center selected-user-box right-box">
+	      				<h6>Alıcı</h6>
+	      				<span>Adı - Soyadı: {{transfer.receiver.name}}</span>
+	      				<span>TC Kimlik Numarası: {{transfer.receiver.identificationNumber}}</span>
+	      				<span>Telefon Numarası: {{transfer.receiver.mobilephone}}</span>
+	      			</div>
+	    		</div>
+	    		<div class="row transfer-summary" style="margin-top: 10px;">
+	      			<span>Miktar: {{transfer.amount}}</span>
+	      			<span>Açıklama: {{transfer.description}}</span>
+	    		</div>
+	    		<div class="row information-message">
+    				<i class="fa fa-star"></i>
+    				<span>Transfer işlemi başarıyla tamamlanmıştır. Transfer detayları gönderici ve alıcıya sms ve mail olarak iletilecektir.</span>
+    			</div>
+    		</div>
+    	</div>
+</modal-dialog>

@@ -4199,7 +4199,7 @@ body {
   font-family: 'Sansita', sans-serif;
   font-size: 17px;
   text-align: center;
-  padding: 10px 24px; }
+  padding: 10px 10px; }
 
 .ld-button-line {
   border: 1px solid #fff;
@@ -4255,9 +4255,12 @@ body {
   margin-right: 30px;
   padding: 10px 10px 10px 10px; }
   .wd-panel .wd-op-button {
-    padding: 10px 10px 10px 10px; }
+    padding: 10px 10px 10px 10px;
+    display: flex; }
     .wd-panel .wd-op-button button {
       width: 250px; }
+    .wd-panel .wd-op-button .ld-button-large {
+      font-size: 15px; }
   .wd-panel .wd-location-span {
     background: #fcda8a; }
   .wd-panel .wd-point-image {
@@ -4293,6 +4296,12 @@ login-modal .ld-button-primary {
   background: #ffd36d !important;
   margin-left: 30px; }
 
+login-modal .login-message {
+  background: #fcf2c2;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 2px solid #ffd36d; }
+
 pointinfo-update-modal .wd-info-box {
   border: 1px solid #ffc238;
   border-top: none;
@@ -4313,6 +4322,71 @@ pointinfo-update-modal .wd-field-header {
 pointinfo-update-modal .wd-field-dropdown {
   width: 70px;
   margin-left: 40px; }
+
+transfer-create-modal .tab-icon {
+  font-size: 25px;
+  color: #fcc649; }
+
+.level-container {
+  text-align: center;
+  padding-top: 15px;
+  border: 1px solid #fcc649;
+  bottom: 5px; }
+  .level-container .transfer-summary {
+    margin-top: 40px; }
+    .level-container .transfer-summary span {
+      display: flow-root;
+      padding-bottom: 5px; }
+  .level-container .information-message {
+    margin-top: 10px;
+    color: #fcc649;
+    text-align: center; }
+  .level-container .search-user-input {
+    width: 450px; }
+  .level-container .search-button {
+    background: #fcc649;
+    content: "\f002";
+    color: #FFF;
+    height: 35px;
+    width: 35px;
+    padding-top: 4px;
+    font-size: 24px;
+    text-align: center; }
+    .level-container .search-button:hover {
+      text-decoration: none; }
+  .level-container .next-level-button {
+    position: absolute;
+    right: 40px;
+    bottom: 40px; }
+  .level-container .selected-user-box {
+    border: 1px solid #fcc649;
+    border-top: none;
+    margin-top: 20px; }
+    .level-container .selected-user-box span {
+      display: flow-root;
+      padding-bottom: 5px; }
+    .level-container .selected-user-box h6 {
+      color: #fcc649;
+      font-family: cursive;
+      text-decoration: underline; }
+  .level-container .centered-box {
+    position: absolute;
+    right: 200px;
+    left: 200px; }
+  .level-container .left-box {
+    position: relative;
+    left: 30px;
+    width: 300px;
+    margin-top: 10px; }
+  .level-container .right-box {
+    position: absolute;
+    right: 40px;
+    top: 170px;
+    width: 300px; }
+  .level-container .field-label {
+    text-align: right; }
+  .level-container .field-input {
+    text-align: left; }
 
 /* Header start */
 nav.navbar-findcond {
@@ -4484,6 +4558,8 @@ nav.navbar-findcond span.badge.new {
   background-color: #fcc649;
   min-height: 30px;
   width: 100%; }
+  .footer-bottom i {
+    color: #FFFFFF; }
 
 .copyright {
   color: #fff;

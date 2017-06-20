@@ -1,4 +1,4 @@
-<modal-dialog box-width="550px" box-height="320px" show-modal="show">
+<modal-dialog box-width="550px" box-height="400px" show-modal="show" on-close-modal="dismiss">
         <div class="container">
           <div class="row">
               <div class="col-sm-12">
@@ -7,7 +7,7 @@
                 <hr style="border-top:1px solid #ffc238"/>
               </div>
           </div>
-          <div><span>{{errorMessage}}</span></div>
+          <div class="login-message" ng-if="loginErrorVisible"><span>{{loginErrorMessage}}</span></div>
           <div class="row">
               <div class="col-sm-4 field-label">
                 Kullanıcı Adı: 

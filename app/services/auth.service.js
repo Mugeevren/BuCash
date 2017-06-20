@@ -1,6 +1,8 @@
 app.service('Auth', ['localStorageService','http','$q',function (localStorageService,http,$q) {
 	
-	this.Login = function(obj){
+	localStorageService.set('isLogin',0);
+
+	this.Login = function(){
 		var defer = $q.defer();
 		localStorageService.set('isLogin',1);
 		defer.resolve(this.isLogin());
@@ -9,12 +11,14 @@ app.service('Auth', ['localStorageService','http','$q',function (localStorageSer
 
 	this.Logout = function(){
 
-		localStorageService.set('isLogin',0)
+		localStorageService.set('isLogin',0);
+		localStorageService.set('UserState',null);
 	};
 
-	this.getUser = function(){
+	this.getUser = function(userId){
 		var defer = $q.defer();
-		http.get('GetUser').then(function(e){
+		var req = { id: userId };
+		http.get('GetUser',req).then(function(e){
  			defer.resolve(e);
 		});
 		return defer.promise;
@@ -28,5 +32,13 @@ app.service('Auth', ['localStorageService','http','$q',function (localStorageSer
 			return false;
 		}
 	}
+
+	this.SetState = function(state){
+		localStorageService.set('UserState',state);
+	};
+
+	this.GetState = function(){
+		return localStorageService.get('UserState');
+	};
 
 }])

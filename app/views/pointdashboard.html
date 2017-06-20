@@ -5,14 +5,15 @@
 			<h6>İşletme Bilgileriniz</h6>
 			<div class="row wd-panel">
 				<div class="wd-point-image">
+					<h3>{{point.name}}</h3>
     				<img ng-src="{{point.image}}">
     				<div>
-    					<span>{{point.address}}</span><br/>
-    					<span>{{point.city}}</span><br/>
+    					<span>{{point.address.addressDetail}} {{point.address.province}}</span><br/>
+    					<span>{{point.address.city}}</span><br/>
     					<span class="wd-workinghours-header">Çalışma Saatleri</span><br/>
-    					<span>Hafta içi: </span><span>{{point.weekdaysWorkingHoursOpen}}</span> - <span>{{point.weekdaysworkinghoursclose}}</span><br/>
-    					<span>Cumartesi: </span><span>{{point.saturdayWorkingHoursOpen}}</span> - <span>{{point.saturdayWorkingHoursClose}}</span><br/>
-    					<span>Pazar: </span><span>{{point.sundaysWorkingHoursOpen}}</span> - <span>{{point.sundaysWorkingHoursClose}}</span><br/>
+    					<span>Hafta içi: </span><span>{{point.workingHours.weekdaysOpen}}</span> - <span>{{point.workingHours.weekdaysClose}}</span><br/>
+    					<span>Cumartesi: </span><span>{{point.workingHours.saturdaysOpen}}</span> - <span>{{point.workingHours.saturdaysClose}}</span><br/>
+    					<span>Pazar: </span><span>{{point.workingHours.sundaysOpen}}</span> - <span>{{point.workingHours.sundaysClose}}</span><br/>
     				</div>
     				<div>
 						<button class="ld-button-primary" ng-click="onPointUpdateModalOpen()">Güncelle</button>
@@ -23,7 +24,7 @@
 		<div class="col-sm-5">
 			<h6>Günlük Hesap Özeti</h6>
 			<div class="wd-panel">
-				<h1>{{Name}}</h1>
+				<h1>{{point.name}}</h1>
 				<transfer-list list="fsdhfbsdljf"></transfer-list>
 			</div>
 
@@ -32,7 +33,7 @@
 			<h6>Hızlı İşlem Menüsü</h6>
 			<div class="wd-panel">
 				<div class="wd-op-button">
-					<button class="ld-button-primary ld-button-large">Yeni Transfer Oluşturma</button>
+					<button class="ld-button-primary ld-button-large" ng-click="onCreateTransferModalOpen()">Yeni Transfer Oluşturma</button>
 				</div>
 				<div class="wd-op-button">
 					<button class="ld-button-primary ld-button-large" ng-click="onTransmissionModalOpen()">Transfer Teslimi</button>
@@ -44,7 +45,11 @@
 			</div>
 		</div>
 	</div>
-	<pointinfo-update-modal show-modal="updatePointInfoModalShown"></pointinfo-update-modal>
+	<pointinfo-update-modal show-modal="updatePointInfoModalShown" point-id="Id" on-modal-closed="GetPointInfo"></pointinfo-update-modal>
+	<transfer-create-modal show-modal="transferCreateModalShown"
+								title="Yeni Transfer Oluşturma"
+								on-modal-closed="GetPointTransferSummary"
+								></transfer-create-modal>
 	<transmission-refund-modal show-modal="transmissionModalShown"
 								title="Transfer Teslimi"
 								header-level-one="Transfer Kodu"

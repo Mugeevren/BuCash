@@ -1,4 +1,4 @@
-<modal-dialog box-width="550px" box-height="550px" show-modal="show">
+<modal-dialog box-width="550px" box-height="550px" show-modal="show" on-close-modal="onModalClosed">
     	<div class="container">
     		<div class="row">
       			<div class="col-sm-12">
@@ -14,23 +14,23 @@
       			<div class="col-sm-12 wd-info-box" ng-if="addresInfoDivOpen">
       				<div class="row">
       					<span class="col-sm-3 wd-label">İl: </span>
-      					<input class="col-sm-7 wd-field" type="input" name="fsdf" placeholder="Hadi bakalım...">
+      					<input class="col-sm-7 wd-field" type="input" name="fsdf" ng-model="point.address.city">
       				</div>
       				<div class="row">
       					<span class="col-sm-3 wd-label">İlçe: </span>
-      					<input class="col-sm-7 wd-field" type="input" name="fsdf" placeholder="Hadi bakalım...">
+      					<input class="col-sm-7 wd-field" type="input" name="fsdf" ng-model="point.address.province">
       				</div>
       				<div class="row">
       					<span class="col-sm-3 wd-label">Adres Detayı: </span>
-      					<textarea class="col-sm-7 wd-field" type="input" name="fsdf" placeholder="Hadi bakalım..."></textarea> 
+      					<textarea class="col-sm-7 wd-field" type="input" name="fsdf" ng-model="point.address.addressDetail"></textarea> 
       				</div>
       				<div class="row">
       					<span class="col-sm-3 wd-label">Posta Kodu: </span>
-      					<input class="col-sm-7 wd-field" type="input" name="fsdf" placeholder="Hadi bakalım...">
+      					<input class="col-sm-7 wd-field" type="input" name="fsdf" ng-model="point.address.city" placeholder="Posta Kodu...">
       				</div>
       				<div class="row">
       					<div class="col-sm-8"></div>
-      					<button class="col-sm-2 ld-button-primary wd-field">Kaydet</button>
+      					<button class="col-sm-2 ld-button-primary wd-field" ng-click="onAddressInfoUpdate()">Kaydet</button>
       					
       				</div>
       			</div>
@@ -49,33 +49,33 @@
       				<div class="row">
       					<span class="col-sm-3 wd-label">Haftaiçi: </span>
       					<div class="col-sm-4">
-      						<input class="wd-field-dropdown" list="workHoursList">
+      						<input class="wd-field-dropdown" list="workHoursList" ng-model="point.workingHours.weekdaysOpen">
       					</div>
       					<div class="col-sm-4">
-      						<input class="wd-field-dropdown" list="workHoursList">
+      						<input class="wd-field-dropdown" list="workHoursList" ng-model="point.workingHours.weekdaysClose">
       					</div>
       				</div>
       				<div class="row">
       					<span class="col-sm-3 wd-label">Cumartesi: </span>
       					<div class="col-sm-4">
-      						<input class="wd-field-dropdown" list="workHoursList">
+      						<input class="wd-field-dropdown" list="workHoursList" ng-model="point.workingHours.saturdaysOpen">
       					</div>
       					<div class="col-sm-4">
-      						<input class="wd-field-dropdown" list="workHoursList">
+      						<input class="wd-field-dropdown" list="workHoursList" ng-model="point.workingHours.saturdaysClose">
       					</div>
       				</div>
       				<div class="row">
       					<span class="col-sm-3 wd-label">Pazar: </span>
       					<div class="col-sm-4">
-      						<input class="wd-field-dropdown" list="workHoursList">
+      						<input class="wd-field-dropdown" list="workHoursList" ng-model="point.workingHours.sundaysOpen">
       					</div>
       					<div class="col-sm-4">
-      						<input class="wd-field-dropdown" list="workHoursList">
+      						<input class="wd-field-dropdown" list="workHoursList" ng-model="point.workingHours.sundaysClose">
       					</div>
       				</div>
       				<div class="row">
       					<div class="col-sm-8"></div>
-      					<button class="col-sm-2 ld-button-primary wd-field">Kaydet</button>
+      					<button class="col-sm-2 ld-button-primary wd-field" ng-click="onWorkingHoursUpdate()">Kaydet</button>
       					
       				</div>
       			</div>
@@ -88,15 +88,15 @@
       			<div class="col-sm-12 wd-info-box" ng-if="pointInfoDivOpen">
       			<div class="row">
       					<span class="col-sm-3 wd-label">İşletme adı: </span>
-      					<input class="col-sm-7 wd-field" type="input" name="fsdf" placeholder="Hadi bakalım...">
+      					<input class="col-sm-7 wd-field" type="input" name="fsdf" ng-model="point.name" >
       				</div>
       				<div class="row">
       					<span class="col-sm-3 wd-label">İşletme resmi: </span>
-      					<input class="col-sm-7 wd-field" type="input" name="fsdf" placeholder="Hadi bakalım...">
+      					<input class="col-sm-7 wd-field" type="input" name="fsdf" ng-model="point.image | point.image.length<=50">
       				</div>
       				<div class="row">
       					<div class="col-sm-8"></div>
-      					<button class="col-sm-2 ld-button-primary wd-field">Kaydet</button>
+      					<button class="col-sm-2 ld-button-primary wd-field" ng-click="onPointInfoUpdate()">Kaydet</button>
       					
       				</div>
       			</div>
