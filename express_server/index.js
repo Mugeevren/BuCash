@@ -318,5 +318,60 @@ app.post('/GetUsersByPhoneOrIdentificationNumber',function(req,res){
                 }
 });
 
+app.post('/GetTransferByTransmissionCode',function(req,res){
+
+                var transmissionCode = req.body.transmissionCode;
+                var data = getData("GetTransfers");
+                var results = data.transfers.filter(x => x.transmissionCode === transmissionCode && !x.isTransmissionCompleted);
+                if(results.length > 0){
+                    //data =  JSON.stringify({"id": result[0].id});
+                    res.json({transfer : results[0]});
+                }
+                else {
+                        data =  JSON.parse('{"message": "Aradığınız kriterlere uygun transfer bulunmadı!"}');
+                        res.json(data);
+                }
+});
+
+app.post('/MarkTransmissionAsComplete',function(req,res){
+
+                var transfer = req.body.transfer;
+                var data = getData("GetTransfers");
+                var result = data.users.filter(x => x.id === transfer.id);
+                if(result.length > 0){
+                    result = result[0];
+                    for(var i in data.transfers){
+                        if(data.transfer[i].id == result.id){
+                            data.transfer[i] = result;
+                            break;
+                        }
+                    }
+                    res.json({transferCompleted : true});
+                }
+                else {
+                    res.json({transferCompleted : true});
+                }
+});
+
+app.post('/CheckReceiverConfirmationCode', function(req, res) {
+
+                var receiverId = req.query.receiverId;
+                var code = req.query.confirmationCode;
+                var data = getData("GetReceiverConfirmationCode");
+                var result = data.users.filter(x => x.receiverId == receiverId);
+                if(result.length > 0){
+                    if(result[0].confirmationCode == code){
+                        res.json({isCodeConfirmed: true});
+                    }
+                    else{
+                        res.json({isCodeConfirmed: false});
+                    }
+                }
+                else {
+                        data =  JSON.parse('{"message": "Böyle bir kullanıcı bulunamadı!"}');
+                        res.json(data);
+                }
+});
+
 app.listen(3000);
 console.log('Server listining with 3000 port');

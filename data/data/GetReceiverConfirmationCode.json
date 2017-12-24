@@ -1,0 +1,20 @@
+{
+	"users": [
+		{
+			"receiverId":"1",
+			"confirmationCode": "VphQ25"
+		},
+		{
+			"receiverId":"2",
+			"confirmationCode": "ALtF1111"
+		},
+		{
+			"receiverId":"3",
+			"confirmationCode": "AABBCC1234"
+		},
+		{
+			"receiverId":"4",
+			"confirmationCode": "random234"
+		}
+	]
+}

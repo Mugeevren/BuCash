@@ -6,19 +6,19 @@
          "transmissionCode":"vrp3125**",
          "receiver":{
             "name":"Semih Bulut",
-            "id":"1",
-			"mobilephone":"05318454082",
-			"identificationNumber":"19963460043"
+            "id":"1"
          },
          "sender":{
             "name":"Müge Evren",
-            "id":"2",
-			"mobilephone":"05546627112",
-			"identificationNumber":"19963460042"
+            "id":"2"
          },
          "receiverPoint":{
             "name":"Öncü Gıda",
             "id":"3"
+         },
+         "deliveryPoint":{
+            "name":"Bulut Manav",
+            "id":"4"
          },
          "receivingDate":"12/12/2016",
          "deliveryDate":"12/12/2016",
@@ -31,19 +31,19 @@
          "transmissionCode":"aaa3125**",
          "receiver":{
             "name":"Semih Bulut",
-            "id":"1",
-			"mobilephone":"05318454082",
-			"identificationNumber":"19963460043"
+            "id":"1"
          },
          "sender":{
             "name":"Müge Evren",
-            "id":"2",
-			"mobilephone":"05546627112",
-			"identificationNumber":"19963460042"
+            "id":"2"
          },
          "receiverPoint":{
             "name":"Yunus Petshop",
             "id":"3"
+         },
+         "deliveryPoint":{
+            "name":"Seda Butik",
+            "id":"4"
          },
          "receivingDate":"13/01/2017",
          "deliveryDate":"15/01/2017",
@@ -56,15 +56,11 @@
          "transmissionCode":"bbb3125**",
          "receiver":{
             "name":"Semih Bulut",
-            "id":"1",
-			"mobilephone":"05318454082",
-			"identificationNumber":"19963460043"
+            "id":"1"
          },
          "sender":{
             "name":"Müge Evren",
-            "id":"2",
-			"mobilephone":"05546627112",
-			"identificationNumber":"19963460042"
+            "id":"2"
          },
          "receiverPoint":{
             "name":"Öncü Gıda",
@@ -85,15 +81,11 @@
          "transmissionCode":"abc3125**",
          "receiver":{
             "name":"Semih Bulut",
-            "id":"1",
-			"mobilephone":"05318454082",
-			"identificationNumber":"19963460043"
+            "id":"1"
          },
          "sender":{
             "name":"Müge Evren",
-            "id":"2",
-			"mobilephone":"05546627112",
-			"identificationNumber":"19963460042"
+            "id":"2"
          },
          "receiverPoint":{
             "name":"MidPoint Cafe",
