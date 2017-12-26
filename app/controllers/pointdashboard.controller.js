@@ -11,7 +11,7 @@ app.controller('PointDashboardController', ['$scope','$rootScope',"http", functi
 
 		http.get("GetPointInfo",req).then(function(res){
 			$scope.point = res.data.point;
-			$rootScope.loggedInUser = res.data.name;
+			$rootScope.loggedInUser = res.data.point.name;
 		});
 	};
 	

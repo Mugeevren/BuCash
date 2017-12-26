@@ -28,11 +28,11 @@
       					<span class="col-sm-3 wd-label">Posta Kodu: </span>
       					<input class="col-sm-7 wd-field" type="input" name="fsdf" ng-model="point.address.city" placeholder="Posta Kodu...">
       				</div>
-      				<div class="row">
+      				<!--<div class="row">
       					<div class="col-sm-8"></div>
       					<button class="col-sm-2 ld-button-primary wd-field" ng-click="onAddressInfoUpdate()">Kaydet</button>
       					
-      				</div>
+      				</div>-->
       			</div>
     		</div>
     		<div class="row">
@@ -73,11 +73,11 @@
       						<input class="wd-field-dropdown" list="workHoursList" ng-model="point.workingHours.sundaysClose">
       					</div>
       				</div>
-      				<div class="row">
+      				<!--<div class="row">
       					<div class="col-sm-8"></div>
       					<button class="col-sm-2 ld-button-primary wd-field" ng-click="onWorkingHoursUpdate()">Kaydet</button>
       					
-      				</div>
+      				</div>-->
       			</div>
     		</div>
     		<div class="row">
@@ -92,15 +92,14 @@
       				</div>
       				<div class="row">
       					<span class="col-sm-3 wd-label">İşletme resmi: </span>
-      					<input class="col-sm-7 wd-field" type="input" name="fsdf" ng-model="point.image | point.image.length<=50">
-      				</div>
-      				<div class="row">
-      					<div class="col-sm-8"></div>
-      					<button class="col-sm-2 ld-button-primary wd-field" ng-click="onPointInfoUpdate()">Kaydet</button>
-      					
+      					<input class="col-sm-7 wd-field" type="input" name="fsdf" ng-model="point.image">
       				</div>
       			</div>
     		</div>
+        <div class="row">
+            <div class="col-sm-8"></div>
+            <button class="col-sm-2 ld-button-primary wd-field" ng-click="onPointInfoUpdate()">Kaydet</button>
+        </div>
     	</div>
 </modal-dialog>
 <datalist id="workHoursList">

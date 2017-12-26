@@ -28,16 +28,16 @@ app.directive('loginModal', [function () {
 					console.log("müge login");
 					
 					var req  = {
-						username: $scope.user.name,
+						userName: $scope.user.name,
 						password: $scope.user.password
 					};
 
-					http.post("LoginUser",req).then(function(res){
-						if(res.data.id){
+					http.get("LoginUser",req).then(function(res){
+						if(res.data.UserId){
 							Auth.Login().then(function(e){
 								$rootScope.isLoggedIn = e;
 							});
-							$rootScope.loggedInUserId = res.data.id;
+							$rootScope.loggedInUserId = res.data.UserId;
 							/*Auth.getUser(res.data.UserId).then(function(e){
 								$rootScope.loggedInUser = e.data.name;
 								$rootScope.loggedInUserId = e.data.id;
@@ -61,18 +61,18 @@ app.directive('loginModal', [function () {
 					console.log('sgdgafgadf');
 
 					var req  = {
-						username: $scope.user.name,
+						userName: $scope.user.name,
 						password: $scope.user.password
 					};
 
 
-					http.post("LoginPoint",req).then(function(res){
-						if(res.data.id){
+					http.get("LoginPoint",req).then(function(res){
+						if(res.data.UserId){
 							
 							Auth.Login().then(function(e){
 								$rootScope.isLoggedIn = e;
 							});
-							$rootScope.loggedInUserId = res.data.id;
+							$rootScope.loggedInUserId = res.data.UserId;
 							/*Auth.getUser(res.data.UserId).then(function(e){
 								$rootScope.loggedInUser = e.data.name;
 								$rootScope.loggedInUserId = e.data.id;

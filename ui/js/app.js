@@ -99,7 +99,7 @@ app.controller('PointDashboardController', ['$scope','$rootScope',"http", functi
 
 		http.get("GetPointInfo",req).then(function(res){
 			$scope.point = res.data.point;
-			$rootScope.loggedInUser = res.data.name;
+			$rootScope.loggedInUser = res.data.point.name;
 		});
 	};
 	
@@ -133,8 +133,8 @@ app.controller('UserDashboardController', ['$scope','$rootScope','http', functio
 		};
 
 		http.get("GetUserInfo",req).then(function(res){
-			$scope.user = res.data.user;
-			$rootScope.loggedInUser = res.data.user.name;
+			$scope.user = res.data;
+			$rootScope.loggedInUser = res.data.name;
 		});
 	};
 	
@@ -187,10 +187,46 @@ app.service('Auth', ['localStorageService','http','$q',function (localStorageSer
 	};
 
 }])
-app.service('http', ['$http','$q',function ($http,$q) {
+
+
+app.service('http', ['$http','$q',function ($http, $q) {
 	
 	var hostURL ='http://localhost:3000/';
-	var isSimulation = false;
+	var isSimulation = true;
+	var postConfig = [];
+	
+	if(isSimulation) {
+		postConfig.push({
+			PostName: "UpdatePointInfo",
+			FileName: "GetPointInfo"
+		});
+	}
+
+	var overwriteJSONFile = function (txnname, txndata){
+
+		var fileToUpdate = postConfig.filter(function(item) { return item.PostName === txnname});
+		if(!_.isUndefined(fileToUpdate) && fileToUpdate.length > 0) {
+			fileToUpdate = fileToUpdate[0].FileName;
+			var fileUrl = urlGenerate(fileToUpdate, txndata);
+		}
+		
+		var fs = require('fs');
+
+		fs.readFile(fileUrl, 'utf-8', function(err, data) {
+			if (err) throw err;
+			var arrayOfObjects = JSON.parse(data);
+			//arrayOfObjects = data;
+			/*arrayOfObjects.users.push({
+				name: "Mikhail",
+				age: 24
+			});*/
+			console.log(arrayOfObjects);
+			fs.writeFile(fileUrl, JSON.stringify(arrayOfObjects), 'utf-8', function(err) {
+				if (err) throw err;
+				console.log('Done!');
+			});
+		});
+	};
 
 	var urlGenerate = function(txnname,data){
 		if(isSimulation){
@@ -204,22 +240,28 @@ app.service('http', ['$http','$q',function ($http,$q) {
 		}else{
 			return hostURL+txnname;
 		}
-	}
+	};
 
 
 
 	this.post = function(txnname,data){
 		var defer = $q.defer();
-		var url = urlGenerate(txnname);
+		
 		console.log(data);
-		$http.post(url,data).then(function(e){
+		if(isSimulation) {
+			overwriteJSONFile(txnname,data);
+			defer.resolve(true);
+		}
+		else {
+			var url = urlGenerate(txnname);
+			$http.post(url,data).then(function(e){
+			 	defer.resolve(e);
+			},function(e){
+				defer.reject('Oops... something went wrong');
+			});
 
-			 defer.resolve(e);
-
-		},function(e){
-			defer.reject('Oops... something went wrong');
-		});
-
+		}
+		
 		return defer.promise;
 	}
 
@@ -240,6 +282,7 @@ app.service('http', ['$http','$q',function ($http,$q) {
 
 		return defer.promise;
 	}
+
 
 	/*this.get = function(txnname){
 		var defer = $q.defer();
@@ -292,16 +335,16 @@ app.directive('loginModal', [function () {
 					console.log("müge login");
 					
 					var req  = {
-						username: $scope.user.name,
+						userName: $scope.user.name,
 						password: $scope.user.password
 					};
 
-					http.post("LoginUser",req).then(function(res){
-						if(res.data.id){
+					http.get("LoginUser",req).then(function(res){
+						if(res.data.UserId){
 							Auth.Login().then(function(e){
 								$rootScope.isLoggedIn = e;
 							});
-							$rootScope.loggedInUserId = res.data.id;
+							$rootScope.loggedInUserId = res.data.UserId;
 							/*Auth.getUser(res.data.UserId).then(function(e){
 								$rootScope.loggedInUser = e.data.name;
 								$rootScope.loggedInUserId = e.data.id;
@@ -325,18 +368,18 @@ app.directive('loginModal', [function () {
 					console.log('sgdgafgadf');
 
 					var req  = {
-						username: $scope.user.name,
+						userName: $scope.user.name,
 						password: $scope.user.password
 					};
 
 
-					http.post("LoginPoint",req).then(function(res){
-						if(res.data.id){
+					http.get("LoginPoint",req).then(function(res){
+						if(res.data.UserId){
 							
 							Auth.Login().then(function(e){
 								$rootScope.isLoggedIn = e;
 							});
-							$rootScope.loggedInUserId = res.data.id;
+							$rootScope.loggedInUserId = res.data.UserId;
 							/*Auth.getUser(res.data.UserId).then(function(e){
 								$rootScope.loggedInUser = e.data.name;
 								$rootScope.loggedInUserId = e.data.id;
@@ -430,7 +473,7 @@ app.directive('pointinfoUpdateModal', [function () {
 			};
 
 
-			$scope.onAddressInfoUpdate = function(){
+			/*$scope.onAddressInfoUpdate = function(){
 				var req = {
 					id: $scope.pointId,
 					address: $scope.point.address
@@ -440,16 +483,16 @@ app.directive('pointinfoUpdateModal', [function () {
 
 					}
 				});
-			};
+			};*/
 
-			$scope.onWorkingHoursUpdate = function(){
+			/*$scope.onWorkingHoursUpdate = function(){
 				var req = {
 					id: $scope.pointId,
 					workingHours: $scope.point.workingHours
 				};
 				http.post('UpdatePointWorkingHours',req).then(function(res){
 				});
-			};
+			};*/
 
 			$scope.onPointInfoUpdate = function(){
 				var req = {
@@ -463,7 +506,7 @@ app.directive('pointinfoUpdateModal', [function () {
 				});
 			};
 
-			
+			$scope.onPointInfoDivOpen();
 		
 		}],
 		link:function (scope, element, attrs){

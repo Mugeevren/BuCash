@@ -9,8 +9,8 @@ app.controller('UserDashboardController', ['$scope','$rootScope','http', functio
 		};
 
 		http.get("GetUserInfo",req).then(function(res){
-			$scope.user = res.data.user;
-			$rootScope.loggedInUser = res.data.user.name;
+			$scope.user = res.data;
+			$rootScope.loggedInUser = res.data.name;
 		});
 	};
 	

@@ -32,7 +32,7 @@ app.directive('pointinfoUpdateModal', [function () {
 			};
 
 
-			$scope.onAddressInfoUpdate = function(){
+			/*$scope.onAddressInfoUpdate = function(){
 				var req = {
 					id: $scope.pointId,
 					address: $scope.point.address
@@ -42,16 +42,16 @@ app.directive('pointinfoUpdateModal', [function () {
 
 					}
 				});
-			};
+			};*/
 
-			$scope.onWorkingHoursUpdate = function(){
+			/*$scope.onWorkingHoursUpdate = function(){
 				var req = {
 					id: $scope.pointId,
 					workingHours: $scope.point.workingHours
 				};
 				http.post('UpdatePointWorkingHours',req).then(function(res){
 				});
-			};
+			};*/
 
 			$scope.onPointInfoUpdate = function(){
 				var req = {
@@ -65,7 +65,7 @@ app.directive('pointinfoUpdateModal', [function () {
 				});
 			};
 
-			
+			$scope.onPointInfoDivOpen();
 		
 		}],
 		link:function (scope, element, attrs){
